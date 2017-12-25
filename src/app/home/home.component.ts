@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { OfertasService } from '../ofertas.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  providers: [OfertasService] // os comp. filhos tem acesso a este servico
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private ofertasService: OfertasService) { }
 
-  ngOnInit() {
+  ngOnInit()
+  {
+    console.log(this.ofertasService.getOfertas());
   }
 
 }
