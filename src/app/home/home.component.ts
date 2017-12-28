@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OfertasService } from '../ofertas.service';
 import { Oferta } from '../shared/oferta.model';
+import { log } from 'util';
 
 @Component({
   selector: 'app-home',
@@ -17,9 +18,17 @@ export class HomeComponent implements OnInit {
   ngOnInit()
   {
     this.ofertasService.getOfertas2()
-      .then((ofertas: Array<Oferta>) => {
+      .then(
+        // sucesso (recebe parametro do resolve)
+        (ofertas: Array<Oferta>) => {
         this.ofertas = ofertas;
-      });
+        },
+        // falha (recebe parametro do reject)
+        (param: any) => {
+          console.log(param);    
+        }
+      
+    );
   }
 
 }
