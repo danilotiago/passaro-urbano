@@ -1,9 +1,13 @@
+import { Http } from '@angular/http'; // servico externo http
+import { Injectable } from '@angular/core'; // permite a injecao de servicos externos
 import { Oferta } from './shared/oferta.model';
-import { resolve } from 'dns';
-import { reject } from 'q';
 
+@Injectable() // faz com que os servicos externos sejam injetados na classe
 export class OfertasService
 {
+    // recebe e atribui o servico externo http
+    constructor(private http: Http){}
+
     public ofertas: Array<Oferta> = [
         {
             id: 1,
