@@ -18,17 +18,24 @@ export class HomeComponent implements OnInit {
   ngOnInit()
   {
     this.ofertasService.getOfertas2()
+      // sucesso
       .then(
-        // sucesso (recebe parametro do resolve)
-        (ofertas: Array<Oferta>) => {
-        this.ofertas = ofertas;
+        // recebe parametro do resolve do tipo array de ofertas
+        // atribuindo a var local ofertas
+        (ofertas_local: Array<Oferta>) => {
+        this.ofertas = ofertas_local;
         },
-        // falha (recebe parametro do reject)
-        (param: any) => {
-          console.log(param);    
+      )
+      // falha
+      .catch(
+
+        // recebe parametro do reject do tipo any e 
+        // atribui a var local param
+        (param_local: any) => {
+          console.log(param_local);    
         }
-      
-    );
+
+      )
   }
 
 }
