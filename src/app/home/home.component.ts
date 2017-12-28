@@ -23,6 +23,9 @@ export class HomeComponent implements OnInit {
         // recebe parametro do resolve do tipo array de ofertas
         // atribuindo a var local ofertas
         (ofertas_local: Array<Oferta>) => {
+          
+        console.log('A função resolve foi resolvida');
+          
         this.ofertas = ofertas_local;
         },
       )
